@@ -97,7 +97,7 @@ export default function BackgroundRemoverApp() {
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
-      <header className="bg-white border-b border-gray-100">
+      <header className="bg-white shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center gap-2">
@@ -434,7 +434,7 @@ export default function BackgroundRemoverApp() {
       )}
 
       {/* Footer */}
-      <footer className="bg-white border-t border-gray-100 mt-auto">
+      <footer className="bg-white mt-auto">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="text-center text-sm text-gray-500">
             © 2024 BackgroundAI • Powered by Advanced AI • 100% Browser-Based
