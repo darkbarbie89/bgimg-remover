@@ -804,60 +804,68 @@ export default function BackgroundRemoverApp() {
       </main>
 
       {/* Footer (forced dark background that works in Tailwind v4) */}
-      <footer className="bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-slate-300">
+      <footer
+  className="text-slate-600 mt-16"
+  style={{
+    background:
+      "linear-gradient(180deg, rgb(248, 250, 252) 0%, rgb(238, 242, 255) 55%, rgb(226, 232, 240) 100%)"
+  }}
+>
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    {/* Top Row */}
     <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-      {/* Column 1 */}
       <div>
-        <h3 className="text-white text-lg font-semibold mb-4">BackgroundAI</h3>
-        <p className="text-sm leading-relaxed">
+        <h3 className="text-xl font-bold text-slate-800 mb-4">
+          BackgroundAI
+        </h3>
+        <p className="text-sm">
           Professional background removal powered by advanced AI technology.
         </p>
       </div>
 
-      {/* Column 2 */}
       <div>
-        <h4 className="text-white font-medium mb-4">Product</h4>
-        <ul className="space-y-2 text-sm">
-          <li><a href="#" className="hover:text-white">Features</a></li>
-          <li><a href="#" className="hover:text-white">Pricing</a></li>
-          <li><a href="#" className="hover:text-white">API Access</a></li>
-          <li><a href="#" className="hover:text-white">Enterprise</a></li>
+        <h4 className="font-semibold mb-4 text-slate-800">Product</h4>
+        <ul className="space-y-2">
+          <li><a href="#" className="hover:text-slate-900">Features</a></li>
+          <li><a href="#" className="hover:text-slate-900">Pricing</a></li>
+          <li><a href="#" className="hover:text-slate-900">API Access</a></li>
+          <li><a href="#" className="hover:text-slate-900">Enterprise</a></li>
         </ul>
       </div>
 
-      {/* Column 3 */}
       <div>
-        <h4 className="text-white font-medium mb-4">Support</h4>
-        <ul className="space-y-2 text-sm">
-          <li><a href="#" className="hover:text-white">Help Center</a></li>
-          <li><a href="#" className="hover:text-white">Terms of Service</a></li>
-          <li><a href="#" className="hover:text-white">Privacy Policy</a></li>
-          <li><a href="#" className="hover:text-white">Contact Us</a></li>
+        <h4 className="font-semibold mb-4 text-slate-800">Support</h4>
+        <ul className="space-y-2">
+          <li><a href="#" className="hover:text-slate-900">Help Center</a></li>
+          <li><a href="#" className="hover:text-slate-900">Terms of Service</a></li>
+          <li><a href="#" className="hover:text-slate-900">Privacy Policy</a></li>
+          <li><a href="#" className="hover:text-slate-900">Contact Us</a></li>
         </ul>
       </div>
 
-      {/* Column 4 */}
       <div>
-        <h4 className="text-white font-medium mb-4">Get in Touch</h4>
-        <ul className="space-y-2 text-sm">
-          <li>support@backgroundai.com</li>
-          <li>1-800-BGREMOVE</li>
-          <li className="flex space-x-3 mt-2">
-            <a href="#" className="hover:text-white">FB</a>
-            <a href="#" className="hover:text-white">TW</a>
-            <a href="#" className="hover:text-white">IG</a>
+        <h4 className="font-semibold mb-4 text-slate-800">Get in Touch</h4>
+        <ul className="space-y-2">
+          <li>Email: support@backgroundai.com</li>
+          <li>Phone: 1-800-BGREMOVE</li>
+          <li className="flex space-x-4 mt-2">
+            <a href="#" className="hover:text-slate-900">FB</a>
+            <a href="#" className="hover:text-slate-900">TW</a>
+            <a href="#" className="hover:text-slate-900">IG</a>
           </li>
         </ul>
       </div>
     </div>
 
-    <div className="border-t border-slate-700 mt-8 pt-6 text-sm text-slate-400 flex justify-between flex-col md:flex-row">
-      <span>© 2024 BackgroundAI. All rights reserved.</span>
-      <span>Made with ❤️ by the BackgroundAI Team</span>
+    {/* Bottom Row */}
+    <div className="mt-8 pt-8 border-t border-slate-300 flex flex-col md:flex-row justify-between items-center text-sm text-slate-500">
+      <p>© 2024 BackgroundAI. All rights reserved.</p>
+      <p className="mt-4 md:mt-0">Made with ❤️ by the BackgroundAI Team</p>
     </div>
   </div>
 </footer>
+
+
 
     </div>
   );
