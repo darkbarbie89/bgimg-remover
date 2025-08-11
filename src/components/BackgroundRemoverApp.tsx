@@ -483,7 +483,7 @@ export default function BackgroundRemoverApp() {
                 <div className="relative bg-gradient-to-br from-blue-50 via-white to-purple-50 rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-shadow border-2 border-blue-500 transform hover:scale-105">
                   <div className="absolute -top-4 left-8">
                     <span className="px-4 py-1 bg-gradient-to-r from-blue-500 to-purple-500 text-white text-sm font-semibold rounded-full">
-                      MOST POPULAR
+                      RECOMMENDED
                     </span>
                   </div>
                   
@@ -709,7 +709,7 @@ export default function BackgroundRemoverApp() {
                 >
                   <Sparkles className="w-4 h-4 text-white" />
                 </div>
-                <span className="font-bold text-xl">BackgroundAI</span>
+                <span className="font-bold text-xl text-white">BackgroundAI</span>
               </div>
               <p className="text-gray-400 text-sm">
                 Professional background removal powered by advanced AI technology.
@@ -718,7 +718,7 @@ export default function BackgroundRemoverApp() {
 
             {/* Quick Links */}
             <div>
-              <h4 className="font-semibold mb-4">Product</h4>
+              <h4 className="font-semibold mb-4 text-white">Product</h4>
               <ul className="space-y-2 text-gray-400 text-sm">
                 <li><a href="#" className="hover:text-white transition-colors">Features</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Pricing</a></li>
@@ -729,7 +729,7 @@ export default function BackgroundRemoverApp() {
 
             {/* Support */}
             <div>
-              <h4 className="font-semibold mb-4">Support</h4>
+              <h4 className="font-semibold mb-4 text-white">Support</h4>
               <ul className="space-y-2 text-gray-400 text-sm">
                 <li><a href="#" className="hover:text-white transition-colors">Help Center</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Terms of Service</a></li>
@@ -740,7 +740,7 @@ export default function BackgroundRemoverApp() {
 
             {/* Contact */}
             <div>
-              <h4 className="font-semibold mb-4">Get in Touch</h4>
+              <h4 className="font-semibold mb-4 text-white">Get in Touch</h4>
               <ul className="space-y-2 text-gray-400 text-sm">
                 <li className="flex items-center gap-2">
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
