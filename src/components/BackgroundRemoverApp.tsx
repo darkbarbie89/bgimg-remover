@@ -532,85 +532,88 @@ export default function BackgroundRemoverApp() {
                   </div>
 
                   {/* Pro Plan */}
-                  <div className="relative bg-gradient-to-br from-blue-50 via-white to-purple-50 rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-shadow border-2 border-blue-500 transform hover:scale-105">
-                    <div className="absolute -top-4 left-8">
-                      <span className="px-4 py-1 bg-gradient-to-r from-blue-500 to-purple-500 text-white text-sm font-semibold rounded-full">
-                        RECOMMENDED
-                      </span>
-                    </div>
+                  {/* Pro Plan */}
+<div className="relative bg-gradient-to-br from-blue-50 via-white to-purple-50 rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-shadow border-2 border-blue-500 transform hover:scale-105">
+  <div className="absolute -top-4 left-8">
+    <span className="px-4 py-1 bg-gradient-to-r from-blue-500 to-purple-500 text-white text-sm font-semibold rounded-full">
+      RECOMMENDED
+    </span>
+  </div>
 
-                    <div className="absolute top-4 right-4">
-                      <div className="w-12 h-12 rounded-full bg-gradient-to-br from-yellow-400 to-orange-400 flex items-center justify-center">
-                        <Crown className="w-6 h-6 text-white" />
-                      </div>
-                    </div>
+  <div className="absolute top-4 right-4">
+    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-yellow-400 to-orange-400 flex items-center justify-center">
+      <Crown className="w-6 h-6 text-white" />
+    </div>
+  </div>
 
-                    <div className="mb-8">
-                      <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                        Professional
-                      </h3>
-                      <div className="flex items-baseline">
-                        <span className="text-5xl font-extrabold text-gray-900">
-                          $9
-                        </span>
-                        <span className="text-2xl font-bold text-gray-900">
-                          .99
-                        </span>
-                        <span className="ml-2 text-gray-500">/month</span>
-                      </div>
-                      <p className="mt-4 text-gray-600">
-                        Everything you need for professional work
-                      </p>
-                    </div>
+  <div className="mb-8">
+    <h3 className="text-2xl font-bold text-gray-900 mb-4">
+      Professional
+    </h3>
+    <div className="flex items-baseline">
+      <span className="text-5xl font-extrabold text-gray-900">
+        $9
+      </span>
+      <span className="text-2xl font-bold text-gray-900">
+        .99
+      </span>
+      <span className="ml-2 text-gray-500">/month</span>
+    </div>
+    <p className="mt-4 text-gray-600">
+      Perfect for professionals and businesses
+    </p>
+  </div>
 
-                    <ul className="space-y-4 mb-8">
-                      <li className="flex items-start gap-3">
-                        <div className="flex-shrink-0 w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center mt-0.5">
-                          <Check className="w-3 h-3 text-blue-600" />
-                        </div>
-                        <span className="text-gray-700">
-                          <strong>Unlimited</strong> background removals
-                        </span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <div className="flex-shrink-0 w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center mt-0.5">
-                          <Check className="w-3 h-3 text-blue-600" />
-                        </div>
-                        <span className="text-gray-700">
-                          Ultra HD quality exports (4K)
-                        </span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <div className="flex-shrink-0 w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center mt-0.5">
-                          <Check className="w-3 h-3 text-blue-600" />
-                        </div>
-                        <span className="text-gray-700">
-                          Batch processing (up to 100 images)
-                        </span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <div className="flex-shrink-0 w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center mt-0.5">
-                          <Check className="w-3 h-3 text-blue-600" />
-                        </div>
-                        <span className="text-gray-700">
-                          Priority AI processing
-                        </span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <div className="flex-shrink-0 w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center mt-0.5">
-                          <Check className="w-3 h-3 text-blue-600" />
-                        </div>
-                        <span className="text-gray-700">24/7 priority support</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <div className="flex-shrink-0 w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center mt-0.5">
-                          <Check className="w-3 h-3 text-blue-600" />
-                        </div>
-                        <span className="text-gray-700">
-                          Commercial license included
-                        </span>
-                      </li>
-                    </ul>
+  <ul className="space-y-4 mb-8">
+    <li className="flex items-start gap-3">
+      <div className="flex-shrink-0 w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center mt-0.5">
+        <Check className="w-3 h-3 text-blue-600" />
+      </div>
+      <span className="text-gray-700">
+        <strong>Unlimited</strong> background removals
+      </span>
+    </li>
+    <li className="flex items-start gap-3">
+      <div className="flex-shrink-0 w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center mt-0.5">
+        <Check className="w-3 h-3 text-blue-600" />
+      </div>
+      <span className="text-gray-700">
+        Full resolution exports (original quality)
+      </span>
+    </li>
+    <li className="flex items-start gap-3">
+      <div className="flex-shrink-0 w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center mt-0.5">
+        <Check className="w-3 h-3 text-blue-600" />
+      </div>
+      <span className="text-gray-700">
+        No watermarks on exports
+      </span>
+    </li>
+    <li className="flex items-start gap-3">
+      <div className="flex-shrink-0 w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center mt-0.5">
+        <Check className="w-3 h-3 text-blue-600" />
+      </div>
+      <span className="text-gray-700">
+        Commercial usage rights
+      </span>
+    </li>
+    <li className="flex items-start gap-3">
+      <div className="flex-shrink-0 w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center mt-0.5">
+        <Check className="w-3 h-3 text-blue-600" />
+      </div>
+      <span className="text-gray-700">
+        Priority processing queue
+      </span>
+    </li>
+    <li className="flex items-start gap-3">
+      <div className="flex-shrink-0 w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center mt-0.5">
+        <Check className="w-3 h-3 text-blue-600" />
+      </div>
+      <span className="text-gray-700">
+        Download history & re-download
+      </span>
+    </li>
+  </ul>
 
                     <button
                       onClick={handleUpgrade}
@@ -804,63 +807,85 @@ export default function BackgroundRemoverApp() {
       </main>
 
       {/* Footer (forced dark background that works in Tailwind v4) */}
-      <footer
-  className="text-slate-600 mt-16"
+     <footer
+  className="text-white relative overflow-hidden"
   style={{
-    background:
-      "linear-gradient(180deg, rgb(248, 250, 252) 0%, rgb(238, 242, 255) 55%, rgb(226, 232, 240) 100%)"
+    background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
   }}
 >
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  {/* Decorative circles */}
+  <div className="absolute top-0 left-0 w-96 h-96 bg-white/5 rounded-full -translate-x-1/2 -translate-y-1/2" />
+  <div className="absolute bottom-0 right-0 w-96 h-96 bg-white/5 rounded-full translate-x-1/2 translate-y-1/2" />
+  
+  <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
     {/* Top Row */}
     <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
       <div>
-        <h3 className="text-xl font-bold text-slate-800 mb-4">
-          BackgroundAI
-        </h3>
-        <p className="text-sm">
+        <div className="flex items-center gap-2 mb-4">
+          <div className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
+            <Sparkles className="w-6 h-6 text-white" />
+          </div>
+          <h3 className="text-xl font-bold text-white">
+            BgImg
+          </h3>
+        </div>
+        <p className="text-sm text-white/80">
           Professional background removal powered by advanced AI technology.
         </p>
       </div>
 
       <div>
-        <h4 className="font-semibold mb-4 text-slate-800">Product</h4>
-        <ul className="space-y-2">
-          <li><a href="#" className="hover:text-slate-900">Features</a></li>
-          <li><a href="#" className="hover:text-slate-900">Pricing</a></li>
-          <li><a href="#" className="hover:text-slate-900">API Access</a></li>
-          <li><a href="#" className="hover:text-slate-900">Enterprise</a></li>
+        <h4 className="font-semibold mb-4 text-white">Product</h4>
+        <ul className="space-y-2 text-sm">
+          <li><div className="text-white/70 hover:text-white transition-colors">Features</div></li>
+          <li><div className="text-white/70 hover:text-white transition-colors">Pricing</div></li>
+          <li><div className="text-white/70 hover:text-white transition-colors">API Access</div></li>
+          <li><div className="text-white/70 hover:text-white transition-colors">Enterprise</div></li>
         </ul>
       </div>
 
       <div>
-        <h4 className="font-semibold mb-4 text-slate-800">Support</h4>
-        <ul className="space-y-2">
-          <li><a href="#" className="hover:text-slate-900">Help Center</a></li>
-          <li><a href="#" className="hover:text-slate-900">Terms of Service</a></li>
-          <li><a href="#" className="hover:text-slate-900">Privacy Policy</a></li>
-          <li><a href="#" className="hover:text-slate-900">Contact Us</a></li>
+        <h4 className="font-semibold mb-4 text-white">Support</h4>
+        <ul className="space-y-2 text-sm">
+          <li><div className="text-white/70 hover:text-white transition-colors">Help Center</div></li>
+          <li><div className="text-white/70 hover:text-white transition-colors">Terms of Service</div></li>
+          <li><div className="text-white/70 hover:text-white transition-colors">Privacy Policy</div></li>
+          <li><div className="text-white/70 hover:text-white transition-colors">Contact Us</div></li>
         </ul>
       </div>
 
       <div>
-        <h4 className="font-semibold mb-4 text-slate-800">Get in Touch</h4>
-        <ul className="space-y-2">
-          <li>Email: support@backgroundai.com</li>
-          <li>Phone: 1-800-BGREMOVE</li>
-          <li className="flex space-x-4 mt-2">
-            <a href="#" className="hover:text-slate-900">FB</a>
-            <a href="#" className="hover:text-slate-900">TW</a>
-            <a href="#" className="hover:text-slate-900">IG</a>
+        <h4 className="font-semibold mb-4 text-white">Get in Touch</h4>
+        <ul className="space-y-2 text-sm">
+          <li className="flex items-center gap-2 text-white/70">
+            <span>📧</span>
+            <a href="mailto:support@backgroundai.com" className="hover:text-white transition-colors">
+              support@bgimg.com
+            </a>
+          </li>
+          <li className="flex items-center gap-2 text-white/70">
+            <span>📞</span>
+            <span>1-800-BGREMOVE</span>
+          </li>
+          <li className="flex gap-3 mt-4">
+            <div className="w-10 h-10 bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-lg flex items-center justify-center transition-all transform hover:scale-110">
+              <span className="text-white font-bold">f</span>
+            </div>
+            <div className="w-10 h-10 bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-lg flex items-center justify-center transition-all transform hover:scale-110">
+              <span className="text-white font-bold">𝕏</span>
+            </div>
+            <div className="w-10 h-10 bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-lg flex items-center justify-center transition-all transform hover:scale-110">
+              <span className="text-white text-xs font-bold">IG</span>
+            </div>
           </li>
         </ul>
       </div>
     </div>
 
     {/* Bottom Row */}
-    <div className="mt-8 pt-8 border-t border-slate-300 flex flex-col md:flex-row justify-between items-center text-sm text-slate-500">
-      <p>© 2024 BackgroundAI. All rights reserved.</p>
-      <p className="mt-4 md:mt-0">Made with ❤️ by the BackgroundAI Team</p>
+    <div className="mt-12 pt-8 border-t border-white/20 flex flex-col md:flex-row justify-between items-center text-sm">
+      <p className="text-white/80">© 2024 BgImg. All rights reserved.</p>
+      <p className="text-white/80 mt-4 md:mt-0">Made with ❤️ by the BgImg Team</p>
     </div>
   </div>
 </footer>
