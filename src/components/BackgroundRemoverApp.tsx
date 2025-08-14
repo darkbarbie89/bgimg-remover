@@ -235,53 +235,48 @@ export default function BackgroundRemoverApp() {
         )}
 
         {/* Header */}
-        <header className="bg-white shadow-sm">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center justify-between h-16">
-              <div className="flex items-center gap-2">
-                <div
-                  className="w-8 h-8 rounded-lg flex items-center justify-center"
-                  style={{
-                    background:
-                      "linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%)",
-                  }}
-                >
-                  <Sparkles className="w-4 h-4 text-white" />
-                </div>
-                <span className="font-bold text-xl text-gray-900">
-                  BackgroundAI
-                </span>
-                {isPro && (
-                  <span className="ml-2 px-2 py-1 bg-gradient-to-r from-yellow-400 to-orange-400 text-white text-xs font-bold rounded-full">
-                    PRO
-                  </span>
-                )}
-              </div>
+<header className="bg-white shadow-sm">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="flex items-center justify-between h-16">
+      <div className="flex items-center gap-2">
+        <img
+          src="/logo-black.png"
+          alt="BgImg Logo"
+          className="h-12 w-auto object-contain"
+        />
+        
+        {isPro && (
+          <span className="ml-2 px-2 py-1 bg-gradient-to-r from-yellow-400 to-orange-400 text-white text-xs font-bold rounded-full">
+            PRO
+          </span>
+        )}
+      </div>
 
-              <div className="flex items-center gap-4">
-                {!isPro && (
-                  <div className="flex items-center gap-2 px-3 py-1.5 bg-gray-100 rounded-full">
-                    <span className="text-sm font-medium text-gray-700">
-                      {getRemainingUses()}/{FREE_LIMIT} free uses left
-                    </span>
-                  </div>
-                )}
-
-                {!modelLoaded ? (
-                  <span className="flex items-center gap-2 text-sm text-gray-500">
-                    <Loader2 className="w-4 h-4 animate-spin" />
-                    Loading AI...
-                  </span>
-                ) : (
-                  <span className="flex items-center gap-2 text-sm text-green-600">
-                    <Check className="w-4 h-4" />
-                    AI Ready
-                  </span>
-                )}
-              </div>
-            </div>
+      <div className="flex items-center gap-4">
+        {!isPro && (
+          <div className="flex items-center gap-2 px-3 py-1.5 bg-gray-100 rounded-full">
+            <span className="text-sm font-medium text-gray-700">
+              {getRemainingUses()}/{FREE_LIMIT} free uses left
+            </span>
           </div>
-        </header>
+        )}
+
+        {!modelLoaded ? (
+          <span className="flex items-center gap-2 text-sm text-gray-500">
+            <Loader2 className="w-4 h-4 animate-spin" />
+            Loading AI...
+          </span>
+        ) : (
+          <span className="flex items-center gap-2 text-sm text-green-600">
+            <Check className="w-4 h-4" />
+            AI Ready
+          </span>
+        )}
+      </div>
+    </div>
+  </div>
+</header>
+
 
         {/* Hero Section (shown when no image yet) */}
         {!originalImage ? (
@@ -816,18 +811,18 @@ export default function BackgroundRemoverApp() {
   {/* Decorative circles */}
   <div className="absolute top-0 left-0 w-96 h-96 bg-white/5 rounded-full -translate-x-1/2 -translate-y-1/2" />
   <div className="absolute bottom-0 right-0 w-96 h-96 bg-white/5 rounded-full translate-x-1/2 translate-y-1/2" />
-  
+
   <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
     {/* Top Row */}
     <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+      {/* Logo & Description */}
       <div>
         <div className="flex items-center gap-2 mb-4">
-          <div className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
-            <Sparkles className="w-6 h-6 text-white" />
-          </div>
-          <h3 className="text-xl font-bold text-white">
-            BgImg
-          </h3>
+          <img
+            src="/logo-white.png"
+            alt="BackgroundAI Logo"
+            className="h-12 w-auto object-contain"
+          />
         </div>
         <p className="text-sm text-white/80">
           Professional background removal powered by advanced AI technology.
@@ -837,20 +832,36 @@ export default function BackgroundRemoverApp() {
       <div>
         <h4 className="font-semibold mb-4 text-white">Product</h4>
         <ul className="space-y-2 text-sm">
-          <li><div className="text-white/70 hover:text-white transition-colors">Features</div></li>
-          <li><div className="text-white/70 hover:text-white transition-colors">Pricing</div></li>
-          <li><div className="text-white/70 hover:text-white transition-colors">API Access</div></li>
-          <li><div className="text-white/70 hover:text-white transition-colors">Enterprise</div></li>
+          <li>
+            <div className="text-white/70 hover:text-white transition-colors">Features</div>
+          </li>
+          <li>
+            <div className="text-white/70 hover:text-white transition-colors">Pricing</div>
+          </li>
+          <li>
+            <div className="text-white/70 hover:text-white transition-colors">API Access</div>
+          </li>
+          <li>
+            <div className="text-white/70 hover:text-white transition-colors">Enterprise</div>
+          </li>
         </ul>
       </div>
 
       <div>
         <h4 className="font-semibold mb-4 text-white">Support</h4>
         <ul className="space-y-2 text-sm">
-          <li><div className="text-white/70 hover:text-white transition-colors">Help Center</div></li>
-          <li><div className="text-white/70 hover:text-white transition-colors">Terms of Service</div></li>
-          <li><div className="text-white/70 hover:text-white transition-colors">Privacy Policy</div></li>
-          <li><div className="text-white/70 hover:text-white transition-colors">Contact Us</div></li>
+          <li>
+            <div className="text-white/70 hover:text-white transition-colors">Help Center</div>
+          </li>
+          <li>
+            <div className="text-white/70 hover:text-white transition-colors">Terms of Service</div>
+          </li>
+          <li>
+            <div className="text-white/70 hover:text-white transition-colors">Privacy Policy</div>
+          </li>
+          <li>
+            <div className="text-white/70 hover:text-white transition-colors">Contact Us</div>
+          </li>
         </ul>
       </div>
 
@@ -859,7 +870,10 @@ export default function BackgroundRemoverApp() {
         <ul className="space-y-2 text-sm">
           <li className="flex items-center gap-2 text-white/70">
             <span>📧</span>
-            <a href="mailto:support@backgroundai.com" className="hover:text-white transition-colors">
+            <a
+              href="mailto:support@backgroundai.com"
+              className="hover:text-white transition-colors"
+            >
               support@bgimg.com
             </a>
           </li>
@@ -889,6 +903,7 @@ export default function BackgroundRemoverApp() {
     </div>
   </div>
 </footer>
+
 
 
 
