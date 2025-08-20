@@ -47,23 +47,30 @@ export default function BackgroundRemoverApp() {
     // Check if user is pro
     const proStatus = localStorage.getItem("bgRemovePro");
     setIsPro(proStatus === "true");
+
+    // Check for lifetime access
+  if (localStorage.getItem("bgimg_lifetime") === "true") {
+    // Lifetime users bypass all limits but keep pricing visible
+  }
   }, []);
 
   const getRemainingUses = () => {
-    if (isPro) return Infinity;
-    return Math.max(0, FREE_LIMIT - usageCount);
-  };
+  if (localStorage.getItem("bgimg_lifetime") === "true") return Infinity;
+  if (isPro) return Infinity;
+  return Math.max(0, FREE_LIMIT - usageCount);
+};
 
   const incrementUsage = () => {
-    if (isPro) return;
-    const newCount = usageCount + 1;
-    setUsageCount(newCount);
-    localStorage.setItem("bgRemoveCount", newCount.toString());
+  if (localStorage.getItem("bgimg_lifetime") === "true") return;
+  if (isPro) return;
+  const newCount = usageCount + 1;
+  setUsageCount(newCount);
+  localStorage.setItem("bgRemoveCount", newCount.toString());
 
-    if (newCount >= FREE_LIMIT) {
-      setShowUpgradeModal(true);
-    }
-  };
+  if (newCount >= FREE_LIMIT) {
+    setShowUpgradeModal(true);
+  }
+};
 
   const handleUpgrade = () => {
     // Placeholder until payments wired
@@ -91,10 +98,10 @@ export default function BackgroundRemoverApp() {
   }
 
   function loadFile(file: File) {
-    if (!isPro && usageCount >= FREE_LIMIT) {
-      setShowUpgradeModal(true);
-      return;
-    }
+  if (!isPro && !localStorage.getItem("bgimg_lifetime") && usageCount >= FREE_LIMIT) {
+    setShowUpgradeModal(true);
+    return;
+  }
 
     if (!file.type.startsWith("image/")) {
       alert("Please upload an image file");
@@ -114,12 +121,12 @@ export default function BackgroundRemoverApp() {
   }
 
   async function processImage() {
-    if (!originalImage) return;
+  if (!originalImage) return;
 
-    if (!isPro && usageCount >= FREE_LIMIT) {
-      setShowUpgradeModal(true);
-      return;
-    }
+  if (!isPro && !localStorage.getItem("bgimg_lifetime") && usageCount >= FREE_LIMIT) {
+    setShowUpgradeModal(true);
+    return;
+  }
 
     setIsProcessing(true);
 
@@ -245,21 +252,22 @@ export default function BackgroundRemoverApp() {
           className="h-12 w-auto object-contain"
         />
         
-        {isPro && (
-          <span className="ml-2 px-2 py-1 bg-gradient-to-r from-yellow-400 to-orange-400 text-white text-xs font-bold rounded-full">
-            PRO
-          </span>
-        )}
+        {(isPro || localStorage.getItem("bgimg_lifetime") === "true") && (
+  <span className="ml-2 px-2 py-1 bg-gradient-to-r from-yellow-400 to-orange-400 text-white text-xs font-bold rounded-full">
+    {localStorage.getItem("bgimg_lifetime") === "true" ? "LIFETIME" : "PRO"}
+  </span>
+)}
+        
       </div>
 
       <div className="flex items-center gap-4">
-        {!isPro && (
-          <div className="flex items-center gap-2 px-3 py-1.5 bg-gray-100 rounded-full">
-            <span className="text-sm font-medium text-gray-700">
-              {getRemainingUses()}/{FREE_LIMIT} free uses left
-            </span>
-          </div>
-        )}
+        {!isPro && localStorage.getItem("bgimg_lifetime") !== "true" && (
+  <div className="flex items-center gap-2 px-3 py-1.5 bg-gray-100 rounded-full">
+    <span className="text-sm font-medium text-gray-700">
+      {getRemainingUses()}/{FREE_LIMIT} free uses left
+    </span>
+  </div>
+)}
 
         {!modelLoaded ? (
           <span className="flex items-center gap-2 text-sm text-gray-500">
