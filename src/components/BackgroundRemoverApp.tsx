@@ -33,12 +33,39 @@ export default function BackgroundRemoverApp() {
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
+// Demo images data
+const demoImages = [
+  { src: "/demos/cosmetic.jpg", alt: "Cosmetics" },
+  { src: "/demos/potrait.png", alt: "Portrait" },
+  { src: "/demos/product.png", alt: "Product" },
+  { src: "/demos/product2.jpg", alt: "Product 2" },
+  { src: "/demos/potrait2.jpg", alt: "Portrait 2" }
+];
+
+// Function to load demo images
+const loadDemoImage = async (imagePath: string) => {
+  try {
+    const response = await fetch(imagePath);
+    const blob = await response.blob();
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      setOriginalImage(e.target?.result as string);
+      setProcessedImage(null);
+    };
+    reader.readAsDataURL(blob);
+  } catch (error) {
+    console.error("Failed to load demo image:", error);
+  }
+};
+
   useEffect(() => {
     // Load AI model
     remover
       .loadModel()
       .then(() => setModelLoaded(true))
       .catch((e) => console.error("Model load fail", e));
+
+      
 
     // Check usage count
     const count = localStorage.getItem("bgRemoveCount");
@@ -53,6 +80,44 @@ export default function BackgroundRemoverApp() {
     // Lifetime users bypass all limits but keep pricing visible
   }
   }, []);
+
+// Auto-process image when uploaded
+useEffect(() => {
+  if (originalImage && !processedImage && !isProcessing && modelLoaded) {
+    // Small delay to ensure UI updates
+    const timer = setTimeout(() => {
+      processImage();
+    }, 100);
+    
+    return () => clearTimeout(timer);
+  }
+}, [originalImage, modelLoaded]); // Run when image is loaded or model is ready
+
+async function processImage() {
+    if (!originalImage) return;
+
+    if (!isPro && !localStorage.getItem("bgimg_lifetime") && usageCount >= FREE_LIMIT) {
+      setShowUpgradeModal(true);
+      return;
+    }
+
+    setIsProcessing(true);
+
+    const img = new Image();
+    img.onload = async () => {
+      try {
+        const canvas = await remover.removeBackground(img);
+        setProcessedImage(canvas.toDataURL("image/png"));
+        incrementUsage();
+      } catch (err) {
+        console.error(err);
+        alert("Processing failed. Please try again.");
+      } finally {
+        setIsProcessing(false);
+      }
+    };
+    img.src = originalImage;
+  }
 
   const getRemainingUses = () => {
   if (localStorage.getItem("bgimg_lifetime") === "true") return Infinity;
@@ -120,31 +185,7 @@ export default function BackgroundRemoverApp() {
     reader.readAsDataURL(file);
   }
 
-  async function processImage() {
-  if (!originalImage) return;
-
-  if (!isPro && !localStorage.getItem("bgimg_lifetime") && usageCount >= FREE_LIMIT) {
-    setShowUpgradeModal(true);
-    return;
-  }
-
-    setIsProcessing(true);
-
-    const img = new Image();
-    img.onload = async () => {
-      try {
-        const canvas = await remover.removeBackground(img);
-        setProcessedImage(canvas.toDataURL("image/png"));
-        incrementUsage();
-      } catch (err) {
-        console.error(err);
-        alert("Processing failed. Please try again.");
-      } finally {
-        setIsProcessing(false);
-      }
-    };
-    img.src = originalImage;
-  }
+  
 
   const downloadImage = () => {
     if (!processedImage) return;
@@ -246,11 +287,13 @@ export default function BackgroundRemoverApp() {
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div className="flex items-center justify-between h-16">
       <div className="flex items-center gap-2">
-        <img
-          src="/logo-black.png"
-          alt="BgImg Logo"
-          className="h-12 w-auto object-contain"
-        />
+  <a href="/" className="cursor-pointer">
+    <img
+      src="/logo-black.png"
+      alt="BgImg Logo"
+      className="h-12 w-auto object-contain hover:opacity-80 transition-opacity"
+    />
+  </a>
         
         {(isPro || localStorage.getItem("bgimg_lifetime") === "true") && (
   <span className="ml-2 px-2 py-1 bg-gradient-to-r from-yellow-400 to-orange-400 text-white text-xs font-bold rounded-full">
@@ -431,15 +474,37 @@ export default function BackgroundRemoverApp() {
                           : "Drop your image here"}
                       </h3>
                       <p className="text-gray-500 mb-4">
-                        {!isPro && usageCount >= FREE_LIMIT
-                          ? "You&apos;ve used all free removals"
-                          : "or click to browse"}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
+  {!isPro && usageCount >= FREE_LIMIT
+    ? "You&apos;ve used all free removals"
+    : "or click to browse"}
+</p>
+</div>
+
+{/* Demo Images Section */}
+<div className="mt-8 text-center">
+  <p className="text-sm text-gray-600 mb-3">No image? Try one of these:</p>
+  <div className="flex justify-center gap-3">
+    {demoImages.map((demo, index) => (
+      <button
+        key={index}
+        onClick={() => loadDemoImage(demo.src)}
+        className="group relative"
+      >
+        <img
+          src={demo.src}
+          alt={demo.alt}
+          className="w-20 h-20 object-cover rounded-lg shadow-md group-hover:shadow-xl transition-all transform group-hover:scale-105"
+        />
+        <span className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 rounded-lg transition-all" />
+      </button>
+    ))}
+  </div>
+</div>
+
+</div>
+</div>
+</div>
+</section>
 
             {/* Pricing Section */}
             <section className="py-20 bg-gray-50">
@@ -668,12 +733,13 @@ export default function BackgroundRemoverApp() {
                 <div className="flex items-center justify-between mb-8">
                   <div>
                     <h2 className="text-2xl font-bold text-gray-900">
-                      {isProcessing
-                        ? "Processing..."
-                        : processedImage
-                        ? "Complete!"
-                        : "Ready to Process"}
-                    </h2>
+  {processedImage 
+    ? "Complete!" 
+    : (originalImage && !processedImage) 
+    ? "Processing..." 
+    : "Ready to Process"}
+</h2>
+                    
                   </div>
                   <button
                     onClick={resetAll}
@@ -699,23 +765,27 @@ export default function BackgroundRemoverApp() {
                     <h3 className="font-medium text-gray-700 mb-3">Result</h3>
                     <div className="rounded-lg overflow-hidden border border-gray-200">
                       {!processedImage ? (
-                        <div className="aspect-square bg-gray-50 flex items-center justify-center">
-                          {isProcessing ? (
-                            <div className="text-center">
-                              <Loader2 className="w-12 h-12 text-blue-500 animate-spin mx-auto mb-4" />
-                              <p className="text-gray-700">
-                                Removing background...
-                              </p>
-                            </div>
-                          ) : (
-                            <div className="text-center">
-                              <ImageIcon className="w-12 h-12 text-gray-300 mx-auto mb-4" />
-                              <p className="text-gray-500">
-                                Result will appear here
-                              </p>
-                            </div>
-                          )}
-                        </div>
+  <div className="aspect-square bg-gray-50 flex items-center justify-center">
+    {originalImage ? (
+      <div className="text-center">
+        <Loader2 className="w-12 h-12 text-blue-500 animate-spin mx-auto mb-4" />
+        <p className="text-gray-700">
+          Removing background...
+        </p>
+        <p className="text-sm text-gray-500 mt-2">
+          This may take a few seconds
+        </p>
+      </div>
+    ) : (
+      <div className="text-center">
+        <ImageIcon className="w-12 h-12 text-gray-300 mx-auto mb-4" />
+        <p className="text-gray-500">
+          Result will appear here
+        </p>
+      </div>
+    )}
+  </div>
+                          
                       ) : (
                         <div className="relative">
                           <div
@@ -766,7 +836,7 @@ export default function BackgroundRemoverApp() {
                       {isProcessing ? (
                         <>
                           <Loader2 className="w-5 h-5 animate-spin" />
-                          Processing...
+                          Processing Automatically...
                         </>
                       ) : !isPro && usageCount >= FREE_LIMIT ? (
                         <>
