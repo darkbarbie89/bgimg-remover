@@ -67,3 +67,12 @@ export default tseslint.config([
   },
 ])
 ```
+Embed code
+<!-- BGImg Background Remover Widget -->
+<iframe 
+    src="https://bgimg.com/embed.html" 
+    width="100%" 
+    height="600" 
+    frameborder="0"
+    style="max-width: 600px;">
+</iframe>

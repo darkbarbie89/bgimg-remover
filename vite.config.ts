@@ -1,23 +1,25 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import path from "node:path";
 
 export default defineConfig({
   plugins: [react()],
-  server: {
-    host: true,
-    port: 5173,
-    strictPort: true
-  },
   build: {
-    chunkSizeWarningLimit: 1000,
     rollupOptions: {
-      onwarn(warning, warn) {
-        // Ignore eval warnings from onnxruntime-web
-        if (warning.code === 'EVAL' && warning.id?.includes('onnxruntime-web')) {
-          return
-        }
-        warn(warning)
-      }
-    }
-  }
-})
+      input: {
+        // normal app entry (main index.html)
+        main: path.resolve(__dirname, "index.html"),
+
+        // embed entry (the lightweight widget page in /public)
+        embed: path.resolve(__dirname, "public/embed.html"),
+      },
+      output: {
+        // make the embed bundle predictable
+        entryFileNames: (chunk) => {
+          if (chunk.name === "embed") return "embed.js";
+          return "[name].js";
+        },
+      },
+    },
+  },
+});

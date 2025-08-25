@@ -1,0 +1,22 @@
+<!-- embed.html -->
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>BGImg - Remove Background</title>
+    <style>
+      body { margin:0; padding:20px; font-family:sans-serif }
+      .embed-container { max-width:500px; margin:0 auto }
+      .powered-by { text-align:center; margin-top:10px; font-size:12px }
+      .powered-by a { color:#667eea; text-decoration:none }
+    </style>
+  </head>
+  <body>
+    <div class="embed-container">
+      <div id="bgimg-embed"></div>
+      <div class="powered-by">Powered by <a href="https://bgimg.com" target="_blank">BGImg.com</a></div>
+    </div>
+    <!-- IMPORTANT: use module entry in dev -->
+    <script type="module" src="/src/embed.tsx"></script>
+  </body>
+</html>
