@@ -222,7 +222,7 @@ async function processImage() {
                   Upgrade to Pro
                 </h3>
                 <p className="text-gray-600">
-                  You&apos;ve used all {FREE_LIMIT} free background removals
+                  You've used all {FREE_LIMIT} free background removals
                 </p>
               </div>
 
