@@ -1,22 +1,176 @@
-<!-- embed.html -->
-<!doctype html>
+<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BGImg - Remove Background</title>
     <style>
-      body { margin:0; padding:20px; font-family:sans-serif }
-      .embed-container { max-width:500px; margin:0 auto }
-      .powered-by { text-align:center; margin-top:10px; font-size:12px }
-      .powered-by a { color:#667eea; text-decoration:none }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .widget-container {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .upload-area {
+            border: 2px dashed #e2e8f0;
+            border-radius: 12px;
+            padding: 48px 24px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: #f8fafc;
+        }
+        
+        .upload-area:hover {
+            border-color: #667eea;
+            background: #f0f4ff;
+        }
+        
+        .upload-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 16px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .upload-icon svg {
+            width: 32px;
+            height: 32px;
+            color: white;
+        }
+        
+        h2 {
+            color: #1a202c;
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+        
+        p {
+            color: #64748b;
+            font-size: 14px;
+        }
+        
+        .file-types {
+            margin-top: 16px;
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+        }
+        
+        .file-type {
+            padding: 4px 12px;
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            font-size: 12px;
+            color: #64748b;
+        }
+        
+        .powered-by {
+            text-align: center;
+            margin-top: 24px;
+            font-size: 12px;
+            color: #94a3b8;
+        }
+        
+        .powered-by a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .powered-by a:hover {
+            text-decoration: underline;
+        }
+        
+        #file-input {
+            display: none;
+        }
     </style>
-  </head>
-  <body>
-    <div class="embed-container">
-      <div id="bgimg-embed"></div>
-      <div class="powered-by">Powered by <a href="https://bgimg.com" target="_blank">BGImg.com</a></div>
+</head>
+<body>
+    <div class="widget-container">
+        <input type="file" id="file-input" accept="image/*">
+        
+        <div class="upload-area" onclick="document.getElementById('file-input').click()">
+            <div class="upload-icon">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                          d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                </svg>
+            </div>
+            
+            <h2>Remove Background</h2>
+            <p>Click to upload or drag & drop your image</p>
+            
+            <div class="file-types">
+                <span class="file-type">PNG</span>
+                <span class="file-type">JPG</span>
+                <span class="file-type">WEBP</span>
+            </div>
+        </div>
+        
+        <div class="powered-by">
+            Powered by <a href="https://bgimg.com" target="_blank">BGImg.com</a>
+        </div>
     </div>
-    <!-- IMPORTANT: use module entry in dev -->
-    <script type="module" src="/src/embed.tsx"></script>
-  </body>
+    
+    <script>
+        document.getElementById('file-input').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                // For demo - redirect to main site
+                alert('Opening BGImg.com to process your image...');
+                window.open('https://bgimg.com', '_blank');
+            }
+        });
+        
+        // Drag and drop
+        const uploadArea = document.querySelector('.upload-area');
+        
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.style.borderColor = '#667eea';
+            uploadArea.style.background = '#f0f4ff';
+        });
+        
+        uploadArea.addEventListener('dragleave', (e) => {
+            e.preventDefault();
+            uploadArea.style.borderColor = '#e2e8f0';
+            uploadArea.style.background = '#f8fafc';
+        });
+        
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            const file = e.dataTransfer.files[0];
+            if (file && file.type.startsWith('image/')) {
+                alert('Opening BGImg.com to process your image...');
+                window.open('https://bgimg.com', '_blank');
+            }
+        });
+    </script>
+</body>
 </html>
