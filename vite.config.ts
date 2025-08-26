@@ -11,7 +11,7 @@ export default defineConfig({
         main: path.resolve(__dirname, "index.html"),
 
         // embed entry (the lightweight widget page in /public)
-        embed: path.resolve(__dirname, "public/embed.html"),
+        embed: path.resolve(__dirname, "embed.html"),
       },
       output: {
         // make the embed bundle predictable
